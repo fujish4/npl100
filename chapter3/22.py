@@ -11,8 +11,8 @@ def extractUK():
             if l["title"] == "イギリス":
                 return l["text"]
 
-pattern = re.compile(r"\[\[Category:.*\]\]", re.MULTILINE + re.VERBOSE)
+pattern = re.compile(r"\[\[Category:(.*?)(?:\|.*)?\]\]", re.MULTILINE + re.VERBOSE)
+result = pattern.findall(extractUK())
 
-for line in extractUK().split("\n"):
-    if pattern.match(line):
-        print(line)
+for line in result:
+    print(line)
